@@ -1,0 +1,11 @@
+.cta-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(360px , 1fr));
+    gap: 30px;
+}
+
+@media(max-width: 380px){
+    .cta-grid{
+        grid-template-columns: repeat(auto-fit, minmax(290px ,1fr));
+    }
+}

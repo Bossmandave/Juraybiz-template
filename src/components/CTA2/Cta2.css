@@ -1,0 +1,11 @@
+.cta2-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px ,1fr));
+    gap: 30px;
+}
+
+@media(max-width: 380px){
+    .cta2-grid{
+        grid-template-columns: repeat(auto-fit, minmax(290px ,1fr));
+    }
+}
