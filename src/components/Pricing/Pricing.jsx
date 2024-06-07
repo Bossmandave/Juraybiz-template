@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import './Pricing.css'
+import { PricingDetails } from './PricingDetails'
 
 function PricingCard({type, price , description, classList}){
     return(
@@ -28,24 +29,16 @@ export default function Pricing(){
                     <p>Find the perfect plan for your business with our flexible pricing options.</p>
                 </div>
                 <div className="price-grid px-16 xl:px-12 lg:px-10 sm:px-6 xs:px-3">
-                    <PricingCard
-                    type="Free"
-                    price="$0"
-                    description="Best for Small Teams or Individuals."
-                    />
-
-                    <PricingCard
-                    type="Profession"
-                    price="$19"
-                    description="Ideal for Growing Companies."
-                    />
-
-                    <PricingCard
-                    classList="text-white bg-dark-green"
-                    type="Enterprise"
-                    price="$49"
-                    description="Ultimate for Enterprise Solutions."
-                    />
+                    {PricingDetails.map((detail)=>{
+                        return(
+                            <PricingCard
+                                key={detail.id}
+                                type={detail.type}
+                                price= {detail.price}
+                                classList={detail.id === 2 ? detail.classList : null }
+                            />                             
+                        )
+                    })}   
                 </div>
             </div>
         </div>

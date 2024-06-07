@@ -4,6 +4,7 @@ import teamimg1 from "..//..//assets/images/teamimg1.png"
 import teamimg2 from "..//..//assets/images/teamimg2.png"
 import teamimg3 from "..//..//assets/images/teamimg3.png"
 import { IconBasketball, IconInstagram, IconTwitter } from "../../assets/icons/icons"
+import { TeamDetails } from "./TeamDetail"
 
 
 function TeamCard({image , name , role}){
@@ -31,23 +32,19 @@ export default function Team(){
                     <p>Get to know the faces behind the scenes and learn about the values that drive us.</p>
                 </div>
                 <div className="team-grid px-10 pt-10 lg:px-7 sm:px-4 xs:px-2">
-                    <TeamCard
-                    name="Sarah K."
-                    role="UX Designer"
-                    image={teamimg1}
-                    />
-
-                    <TeamCard
-                    name="Michael L."
-                    role="Lead Designer"
-                    image={teamimg2}
-                    />
-
-                    <TeamCard
-                    name="Lauren M."
-                    role="Product Designer"
-                    image={teamimg3}
-                    />
+                    {TeamDetails.map((detail)=>{
+                        return(
+                            <TeamCard
+                                key={detail.id}
+                                name={detail.name}
+                                role= {detail.role}
+                                image={detail.id === 0 ? teamimg1 :
+                                        detail.id === 1 ? teamimg2 :
+                                        detail.id === 2 ? teamimg3 : null
+                                    }
+                                />                             
+                        )
+                    })}
                 </div>
             </div>
         </div>

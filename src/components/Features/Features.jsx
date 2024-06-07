@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { IconArrowRight, IconBoundingBox, IconCodeSlash, IconWandMagicSparkles } from "../../assets/icons/icons"
 import "./Features.css"
+import { FeaturesDetails } from "./FeaturesDetails"
 //features prop
 function FeatureCard({logo, header , text , logoColor , logobgColor}){
     return(
@@ -29,27 +30,22 @@ export default function Features(){
                     <p className="">These are just a few features you’ll get using our Landing Page Ui Kit.</p>
                 </div>
                 <div className="features-grid mt-16 px-16 md:px-10 sm:px-5">
-                    <FeatureCard
-                    logoColor="text-red-400"
-                    logobgColor="bg-red-200"
-                    logo={<IconWandMagicSparkles/>}
-                    header="Fast building"
-                    text="Tailor This Landing Page UI Kit to your unique style and brand with customisable components, in no time!"
-                    />
-                    <FeatureCard
-                    logoColor="text-dark-green"
-                    logobgColor="bg-green-200"
-                    logo={<IconBoundingBox/>}
-                    header="Responsive Design" 
-                    text="No need to worry about screen size. This Landing Page UI Kit adapts to any screen size, from desktop to mobile."                   
-                    />
-                    <FeatureCard
-                    logoColor="text-yellow-600"
-                    logobgColor="bg-yellow-100"
-                    logo={<IconCodeSlash/>}
-                    header="No Code Needed" 
-                    text="Zero coding skills required, Figma prototypes empowers you to create and preview stunning landing pages with ease."                   
-                    />
+                    {FeaturesDetails.map((detail)=>{
+                            return(
+                                <FeatureCard
+                                    key={detail.id}
+                                    logoColor={detail.logoColor}
+                                    logobgColor= {detail.logobgColor}
+                                    logo={detail.id === 0 ? <IconWandMagicSparkles/> :
+                                            detail.id === 1 ? <IconBoundingBox/> :
+                                            detail.id === 2 ? <IconCodeSlash/> : null
+                                        }
+                                    header={detail.header}
+                                    text= {detail.text}
+                                    />                             
+        
+                            )
+                        })}
                 </div>
             </div>
         </div>

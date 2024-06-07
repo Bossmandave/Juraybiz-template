@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 
+import { MetricDetails } from "./MetricDetails"
+
 
 function MetricCard({value , description}){
     return(
-        <div className="text-center border-b-4 border-orange-300 shadow-xl w-[250px] py-10 rounded-t-3xl bg-white">
+        <div className="text-center border-b-4 border-orange shadow-xl w-[250px] py-10 rounded-t-3xl bg-white">
             <h1 className="font-bold text-[35px]">{value}</h1>
             <p>{description}</p>
         </div>
@@ -18,22 +20,15 @@ export default function Metrics(){
                     <p>Our metrics component gives you the inside scoop on your success and helps you stay on top of your game in style.</p>
                 </div>
                 <div className="flex items-center justify-center px-10 mt-16 flex-wrap gap-8">
-                    <MetricCard
-                    value="10k+"
-                    description="Website Launched"
-                    />
-                    <MetricCard
-                    value="931k+"
-                    description="Projects created"
-                    />
-                    <MetricCard
-                    value="240k+"
-                    description="New users joined"
-                    />
-                    <MetricCard
-                    value="12k+"
-                    description="Teams used"
-                    />
+                    {MetricDetails.map((detail)=>{
+                        return(
+                            <MetricCard
+                                key={detail.id}
+                                value={detail.value}
+                                description= {detail.description}
+                            />                             
+                        )
+                    })} 
                 </div>
             </div>
             

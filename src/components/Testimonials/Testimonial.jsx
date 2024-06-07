@@ -3,7 +3,10 @@ import "./Testimonial.css"
 import user1 from "..//..//assets/images/user1.png"
 import user2 from "..//..//assets/images/user2.png"
 import user3 from "..//..//assets/images/user3.png"
+import { TestimonialDetails } from "./TestimonialDetails  "
 
+
+//Testimonial Prop
 function TestimonialCard({name, image , about , feedback, rating}){
     return(
         <div className="px-7 text-center rounded-xl py-7 bg-white shadow hover:shadow-xl transition-all">
@@ -16,6 +19,7 @@ function TestimonialCard({name, image , about , feedback, rating}){
     )
 }
 
+
 export default function Testimonial(){
     return(
         <div className="testimonials">
@@ -27,27 +31,23 @@ export default function Testimonial(){
                     </div>
 
                     <div className="test-grid gap-6 mt-20 px-10 sm:px-5">
-                        <TestimonialCard
-                        image={user1}
-                        name="Sarah K."
-                        about="UX Designer @Brello"
-                        feedback="I was looking for a way to streamline my design process and the --’s Landing Page UI Kit was a lifesaver! The intuitive design and ease of customisation have saved me hours of time and effort. Highly recommend!"
-                        rating="⭐⭐⭐⭐⭐"
-                        />
-                        <TestimonialCard
-                        image={user2}
-                        name="Michael L."
-                        about="Creative Director @Yo"
-                        feedback="The Landing Page UI Kit has been a game changer for my agency. The pre-designed components and templates have helped us deliver projects faster and with more consistency. Great job!"
-                        rating="⭐⭐⭐⭐⭐"
-                        />
-                        <TestimonialCard
-                        image={user3}
-                        name="Lauren M."
-                        about="UI Designer @Boo"
-                        feedback="--’s Landing Page UI Kit has become a staple in my design toolkit. Whether I'm working on a new project or need to make updates to an existing one, this kit has everything I need to get the job done quickly and efficiently."
-                        rating="⭐⭐⭐⭐⭐"
-                        />
+                        {TestimonialDetails.map((detail)=>{
+                            return(
+                                <TestimonialCard
+                                    key={detail.id}
+                                    image={detail.id === 0 ? user1 :
+                                        detail.id === 1 ? user2 :
+                                        detail.id === 2 ? user3 : null
+                                    }
+                                    name={detail.name}
+                                    about={detail.about}
+                                    feedback={detail.feedback}
+                                    rating={detail.rating}
+                                />                             
+        
+                            )
+                        })}
+                        
                     </div>
                 </div>
             </div>
